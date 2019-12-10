@@ -253,8 +253,12 @@ public class P3_FerrerN {
                           System.out.println("Entrada incorrecta");
 
                       }
-                     
-                        if (mesParticipants ==1){
+                       if((dadaCorrecta) && (intents < MAX_INTENTS))
+                         {
+                            participants++;   
+                         }
+                        
+                      if (mesParticipants ==1){
                             introduirMes = true;
                             intents = 0;
                         }
@@ -265,10 +269,7 @@ public class P3_FerrerN {
                   {
                       dadaCorrecta = false;
                   }
-                 if((dadaCorrecta) && (intents < MAX_INTENTS))
-                 {
-                    participants++;   
-                 }
+                
                   
                  
                   
@@ -401,7 +402,7 @@ public class P3_FerrerN {
                               break;
                       }
                       
-                    if(dadaCorrecta && (participants > 0))
+                    if(dadaCorrecta && (participants > 1) && (seguir ==1))
                     {
                         System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
                         System.out.println(codi[i]+"    "+genereTipus+"     "+tipusEntrada+"     "+sessio+"    "+idSessio[i]+"     "  +experiencia[i]);
