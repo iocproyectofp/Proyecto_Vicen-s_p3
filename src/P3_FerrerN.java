@@ -116,7 +116,7 @@ public class P3_FerrerN {
         int []idSessio = new int [MAX_PARTICIPANTS];
         int []experiencia = new int [MAX_PARTICIPANTS];
         int intents=0, mesParticipants =0,participants = 0, seguir=0, icanvi=0 ;
-        boolean dadaCorrecta= true, introduirMes = false;
+        boolean dadaCorrecta= false, introduirMes = false;
         String genereTipus = "";
         String tipusEntrada= "";
         String sessio = "";
@@ -138,6 +138,10 @@ public class P3_FerrerN {
                         dadaCorrecta = false;
                         System.out.println ("El codi no és correcte");
                     }  
+                }else
+                {
+                    dadaCorrecta = false;
+                    lector.next();
                 }
                     intents++;
             } while ((!dadaCorrecta)&& (intents<MAX_INTENTS));
@@ -257,8 +261,15 @@ public class P3_FerrerN {
                         if (mesParticipants ==0){
                             introduirMes= false;
                         }
+                  }else
+                  {
+                      dadaCorrecta = false;
                   }
-                 participants++;
+                 if((dadaCorrecta) && (intents < MAX_INTENTS))
+                 {
+                    participants++;   
+                 }
+                  
                  
                   
                  
@@ -267,7 +278,7 @@ public class P3_FerrerN {
 
         } while (introduirMes); 
         
-        if(!introduirMes)
+        if(!introduirMes && dadaCorrecta && (participants > 0))
         {
           System.out.println("S' han intriuit  " +participants+ " nous participants");
           
@@ -309,8 +320,12 @@ public class P3_FerrerN {
                               sessio = SESSIO1;
                               break;
                       }
-                System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
-                System.out.println(codi[i]+"    "+genereTipus+"     "+tipusEntrada+"     "+sessio+"    "+idSessio[i]+"     "  +experiencia[i]);       
+                
+                if((dadaCorrecta) && (participants > 0))
+                {
+                    System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
+                    System.out.println(codi[i]+"    "+genereTipus+"     "+tipusEntrada+"     "+sessio+"    "+idSessio[i]+"     "  +experiencia[i]);   
+                }
               }
         }
               System.out.println("vols mostrar el participants edreçats per experiencia? 1-SI 0-NO");
@@ -386,8 +401,11 @@ public class P3_FerrerN {
                               break;
                       }
                       
-                    System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
-                    System.out.println(codi[i]+"    "+genereTipus+"     "+tipusEntrada+"     "+sessio+"    "+idSessio[i]+"     "  +experiencia[i]);
+                    if(dadaCorrecta && (participants > 0))
+                    {
+                        System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
+                        System.out.println(codi[i]+"    "+genereTipus+"     "+tipusEntrada+"     "+sessio+"    "+idSessio[i]+"     "  +experiencia[i]);
+                    }
                  
               }
     }
