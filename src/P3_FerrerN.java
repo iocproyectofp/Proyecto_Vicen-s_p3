@@ -120,7 +120,7 @@ public class P3_FerrerN {
         String genereTipus = "";
         String tipusEntrada= "";
         String sessio = "";
-
+        int j = 0, i = 0;
 
         Scanner lector = new Scanner (System.in);
 
@@ -267,13 +267,14 @@ public class P3_FerrerN {
 
         } while (introduirMes); 
         
-
+        if(!introduirMes)
+        {
           System.out.println("S' han intriuit  " +participants+ " nous participants");
           
           // Mostrem dades introduices de 0 fins a participants.
           
-
-              for (int i=0; i < participants; i++){ 
+          
+              for (i=0; i < participants; i++){ 
                       switch (genere[i]){
                           case 1:
                               genereTipus = GENERE1;
@@ -308,17 +309,18 @@ public class P3_FerrerN {
                               sessio = SESSIO1;
                               break;
                       }
-                 System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
+                System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
                 System.out.println(codi[i]+"    "+genereTipus+"     "+tipusEntrada+"     "+sessio+"    "+idSessio[i]+"     "  +experiencia[i]);       
               }
+        }
               System.out.println("vols mostrar el participants edreçats per experiencia? 1-SI 0-NO");
               dadaCorrecta= lector.hasNextInt();
               if (dadaCorrecta){
                   seguir = lector.nextInt();
                   if (seguir ==1){
-                      for (int j=0; j < participants -1; j++){
-                         for(int i = j + 1; i < participants; i++){
-                             if(experiencia [j] < experiencia [i]){
+                      for (j=0; j < participants -1; j++){
+                         for(i = j + 1; i < participants; i++){
+                             if(experiencia [j] > experiencia [i]){
                                  icanvi = experiencia [j];
                                  experiencia [j]= experiencia [i];
                                  experiencia [i]= icanvi;
@@ -348,7 +350,7 @@ public class P3_FerrerN {
                   }
                   
               }
-              for (int i=0; i < participants; i++){ 
+              for (i=0; i < participants; i++){ 
                       switch (genere[i]){
                           case 1:
                               genereTipus = GENERE1;
@@ -383,8 +385,10 @@ public class P3_FerrerN {
                               sessio = SESSIO1;
                               break;
                       }
-                 System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
-                 System.out.println(codi[i]+"    "+genereTipus+"     "+tipusEntrada+"     "+sessio+"    "+idSessio[i]+"     "  +experiencia[i]);
+                      
+                    System.out.println("CODI    GENERE            TIPUS         SESSIO        ID       EXPERIENCIA");
+                    System.out.println(codi[i]+"    "+genereTipus+"     "+tipusEntrada+"     "+sessio+"    "+idSessio[i]+"     "  +experiencia[i]);
+                 
               }
     }
 
